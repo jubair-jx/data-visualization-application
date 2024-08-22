@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
+import { TCustomerInfo } from './customer.interface';
 
-const customerSchema = new Schema({
+const customerSchema = new Schema<TCustomerInfo>({
   id: String,
   email: String,
   first_name: String,
@@ -14,4 +15,7 @@ const customerSchema = new Schema({
   total_spent: Number,
 });
 
-export const customerModel = model('shopifyCustomers', customerSchema);
+export const customerModel = model<TCustomerInfo>(
+  'shopifyCustomers',
+  customerSchema,
+);
