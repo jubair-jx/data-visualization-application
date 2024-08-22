@@ -12,4 +12,8 @@ const orderSchema = new Schema<TOrder>({
   customer_id: String,
 });
 
-export const orderModel = model<TOrder>('shopifyOrders', orderSchema);
+export const orderModel = model<TOrder>(
+  'shopifyOrders',
+  orderSchema,
+  'shopifyOrders',
+);

@@ -4,7 +4,7 @@ export const GetOrderFromDB = async (query: Record<string, unknown>) => {
   const { interval } = query;
   // console.log(findall);
   const getAll = await orderModel.find();
-  console.log(getAll);
+  return getAll;
   // try {
   //   let groupBy;
   //   if (interval === 'daily') {

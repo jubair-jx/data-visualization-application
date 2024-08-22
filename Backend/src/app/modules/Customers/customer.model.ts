@@ -18,4 +18,5 @@ const customerSchema = new Schema<TCustomerInfo>({
 export const customerModel = model<TCustomerInfo>(
   'shopifyCustomers',
   customerSchema,
+  'shopifyCustomers',
 );
