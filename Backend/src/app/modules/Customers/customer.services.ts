@@ -73,24 +73,34 @@ export const GetRepeatCustomersFromDB = async (
   switch (interval) {
     case 'daily':
       dateFormat = '%Y-%m-%d';
-      groupBy = { $dateToString: { format: dateFormat, date: '$created_at' } };
+      groupBy = {
+        $dateToString: { format: dateFormat, date: '$firstPurchaseDate' },
+      };
       break;
     case 'monthly':
       dateFormat = '%Y-%m';
-      groupBy = { $dateToString: { format: dateFormat, date: '$created_at' } };
+      groupBy = {
+        $dateToString: { format: dateFormat, date: '$firstPurchaseDate' },
+      };
       break;
     case 'quarterly':
       groupBy = {
         $concat: [
-          { $toString: { $year: '$created_at' } },
+          { $toString: { $year: '$firstPurchaseDate' } },
           '-Q',
-          { $toString: { $ceil: { $divide: [{ $month: '$created_at' }, 3] } } },
+          {
+            $toString: {
+              $ceil: { $divide: [{ $month: '$firstPurchaseDate' }, 3] },
+            },
+          },
         ],
       };
       break;
     case 'yearly':
       dateFormat = '%Y';
-      groupBy = { $dateToString: { format: dateFormat, date: '$created_at' } };
+      groupBy = {
+        $dateToString: { format: dateFormat, date: '$firstPurchaseDate' },
+      };
       break;
     default:
       return { message: 'Invalid interval specified' };
@@ -98,6 +108,17 @@ export const GetRepeatCustomersFromDB = async (
 
   try {
     const result = await orderModel.aggregate([
+      {
+        $addFields: {
+          created_at: {
+            $cond: {
+              if: { $isNumber: '$created_at' },
+              then: '$created_at',
+              else: { $dateFromString: { dateString: '$created_at' } },
+            },
+          },
+        },
+      },
       {
         $group: {
           _id: '$customer_id',
@@ -107,7 +128,7 @@ export const GetRepeatCustomersFromDB = async (
       },
       {
         $match: {
-          totalPurchases: { $gt: 1 },
+          totalPurchases: { $gt: 1 }, // Only customers with more than one purchase
         },
       },
       {
