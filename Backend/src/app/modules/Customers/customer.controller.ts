@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import {
   getAllNewCustomer,
+  GetGeographicalDistributionOfCustomer,
   GetRepeatCustomersFromDB,
 } from './customer.services';
 
@@ -23,6 +24,17 @@ export const GetRepeatCustomers = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Repeat customers have been retrived successfully',
+    data: result,
+  });
+});
+export const GetGeographicalDistribution = catchAsync(async (req, res) => {
+  const result = await GetGeographicalDistributionOfCustomer();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message:
+      'Geographical distribution of customers have been retrived successfully',
     data: result,
   });
 });

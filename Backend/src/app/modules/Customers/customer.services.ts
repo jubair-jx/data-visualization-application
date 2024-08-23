@@ -58,7 +58,6 @@ export const getAllNewCustomer = async (query: Record<string, unknown>) => {
     ]);
     return result;
   } catch (err) {
-    console.error(err);
     return { error: 'Failed to fetch new customers data' };
   }
 };
@@ -144,7 +143,21 @@ export const GetRepeatCustomersFromDB = async (
 
     return result;
   } catch (err) {
-    console.error(err);
     throw new Error('Failed to fetch repeat customers data');
   }
+};
+
+export const GetGeographicalDistributionOfCustomer = async () => {
+  const result = await customerModel.aggregate([
+    {
+      $group: {
+        _id: '$default_address.city',
+        customerCount: { $sum: 1 },
+      },
+    },
+    {
+      $sort: { customerCount: -1 },
+    },
+  ]);
+  return result;
 };
