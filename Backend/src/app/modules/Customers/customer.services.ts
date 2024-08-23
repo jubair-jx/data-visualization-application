@@ -161,3 +161,65 @@ export const GetGeographicalDistributionOfCustomer = async () => {
   ]);
   return result;
 };
+
+export const GetAllGetClvCohorts = async () => {
+  try {
+    const cohorts = await customerModel.aggregate([
+      {
+        $lookup: {
+          from: 'shopifyOrders',
+          let: { customerId: '$_id' }, // Use `_id` from customerModel
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $eq: ['$customer.id', { $toLong: '$$customerId' }], // Convert `_id` to long for comparison
+                },
+              },
+            },
+            {
+              $project: {
+                created_at: { $dateFromString: { dateString: '$created_at' } }, // Convert string to Date
+                total_price_set: {
+                  $toDouble: '$total_price_set.shop_money.amount',
+                }, // Convert string to number
+              },
+            },
+          ],
+          as: 'orders',
+        },
+      },
+      { $unwind: '$orders' },
+      {
+        $group: {
+          _id: {
+            cohortMonth: {
+              $dateToString: { format: '%Y-%m', date: '$orders.created_at' },
+            },
+            customerId: '$_id',
+          },
+          totalValue: { $sum: '$orders.total_price_set' },
+        },
+      },
+      {
+        $group: {
+          _id: '$_id.cohortMonth',
+          totalValue: { $sum: '$totalValue' },
+          totalCustomers: { $addToSet: '$_id.customerId' },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          cohortMonth: '$_id',
+          clv: { $divide: ['$totalValue', { $size: '$totalCustomers' }] },
+        },
+      },
+      { $sort: { cohortMonth: 1 } },
+    ]);
+
+    return cohorts;
+  } catch (err) {
+    throw new Error('Failed to fetch CLV by cohorts data');
+  }
+};
