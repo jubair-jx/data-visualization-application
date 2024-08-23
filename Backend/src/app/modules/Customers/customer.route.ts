@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getCustomers } from './customer.controller';
+import { GetRepeatCustomers, newGetCustomers } from './customer.controller';
 
 const customerRouter = Router();
 
-customerRouter.get('/', getCustomers);
+customerRouter.get('/new-customers', newGetCustomers);
+customerRouter.get('/repeat-customers', GetRepeatCustomers);
 
 export default customerRouter;
