@@ -33,7 +33,7 @@ const SidebarLayout = () => {
       </div>
 
       <div className=" mb-4">
-        <div className=" mt-6">
+        <div className=" mt-6 cursor-pointer">
           <FaRegUserCircle
             className=" text-gray-300 text-center mx-auto"
             fontSize={30}
@@ -44,7 +44,7 @@ const SidebarLayout = () => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["4"]}
+        defaultSelectedKeys={["6"]}
         items={sideItems}
         style={{
           background: "#030637",
