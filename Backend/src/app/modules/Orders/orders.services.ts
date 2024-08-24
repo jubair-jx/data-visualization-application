@@ -78,7 +78,7 @@ export const getTotalSalesOverTime = async (query: Record<string, unknown>) => {
 export const getSalesGrowthRateOverTime = async (
   query: Record<string, unknown>,
 ) => {
-  const interval = query.interval || 'monthly';
+  const interval = query.interval || 'quarterly';
 
   let dateFormat;
   let groupBy;

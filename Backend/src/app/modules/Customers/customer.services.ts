@@ -65,7 +65,7 @@ export const getAllNewCustomer = async (query: Record<string, unknown>) => {
 export const GetRepeatCustomersFromDB = async (
   query: Record<string, unknown>,
 ) => {
-  const interval = query.interval || 'daily';
+  const interval = query.interval || 'quarterly';
   let dateFormat;
   let groupBy;
 

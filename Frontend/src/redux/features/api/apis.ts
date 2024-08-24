@@ -9,7 +9,14 @@ export const mainApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Sales"],
     }),
+    getSalesGrowth: build.query({
+      query: (arg: string) => ({
+        url: `/orders/sales-growth?interval=${arg}`,
+        method: "GET",
+      }),
+      providesTags: ["Growth"],
+    }),
   }),
 });
 
-export const { useGetTotalSalesQuery } = mainApi;
+export const { useGetTotalSalesQuery, useGetSalesGrowthQuery } = mainApi;
