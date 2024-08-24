@@ -31,8 +31,15 @@ export const mainApi = baseApi.injectEndpoints({
       providesTags: ["Customers"],
     }),
     getCohortsByValue: build.query({
-      query: (arg: string) => ({
-        url: `/customers/clv-cohorts?interval=${arg}`,
+      query: () => ({
+        url: `/customers/clv-cohorts`,
+        method: "GET",
+      }),
+      providesTags: ["Customers"],
+    }),
+    getGeographicalDistribution: build.query({
+      query: () => ({
+        url: `/customers/geographical-distribution`,
         method: "GET",
       }),
       providesTags: ["Customers"],
@@ -46,4 +53,5 @@ export const {
   useGetNewCutomersQuery,
   useGetSalesGrowthQuery,
   useGetReapeatCutomersQuery,
+  useGetGeographicalDistributionQuery,
 } = mainApi;

@@ -4,7 +4,7 @@ import Loading from "@/components/ui/Loading";
 import { useGetCohortsByValueQuery } from "@/redux/features/api/apis";
 
 function CLVCohorts() {
-  const { data, isLoading } = useGetCohortsByValueQuery("", {
+  const { data, isLoading } = useGetCohortsByValueQuery({
     refetchOnMountOrArgChange: true,
     skip: false,
     refetchOnReconnect: true,
