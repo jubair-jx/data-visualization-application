@@ -1,5 +1,6 @@
 import CLVCohorts from "@/pages/CLVCohorts/CLVCohorts";
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import GeographicalDistribution from "@/pages/GeographicalDistribution/GeographicalDistribution";
 import NewCustomers from "@/pages/NewCustomers/NewCustomers";
 import RepeatCustomer from "@/pages/RepeatCustomer/RepeatCustomer";
 import SalesGrowth from "@/pages/SalesGrowth/SalesGrowth";
@@ -35,5 +36,10 @@ export const routePaths = [
     name: "Customer Lifetime Value",
     path: "clv-cohorts",
     element: <CLVCohorts />,
+  },
+  {
+    name: "Geographical Distribution",
+    path: "geographical-distribution",
+    element: <GeographicalDistribution />,
   },
 ];

@@ -17,7 +17,7 @@ function CLVCohorts() {
     <section>
       <CommonHeading
         title="Customer Lifetime Value by Cohorts"
-        des="You can see the fifetime Value by Cohorts and also do filtering stuff"
+        des="You can see the fifetime Value by Cohorts"
       />
 
       <CustomerLifetimeValueGraph data={data} />
