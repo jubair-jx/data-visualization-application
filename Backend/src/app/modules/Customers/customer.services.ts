@@ -2,7 +2,7 @@ import { orderModel } from '../Orders/orders.model';
 import { customerModel } from './customer.model';
 
 export const getAllNewCustomer = async (query: Record<string, unknown>) => {
-  const interval = query.interval || 'daily';
+  const interval = query.interval || 'monthly';
   let dateFormat;
   let groupBy;
 

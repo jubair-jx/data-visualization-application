@@ -16,7 +16,26 @@ export const mainApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Growth"],
     }),
+    getNewCutomers: build.query({
+      query: (arg: string) => ({
+        url: `/customers/new-customers?interval=${arg}`,
+        method: "GET",
+      }),
+      providesTags: ["Customers"],
+    }),
+    getReapeatCutomers: build.query({
+      query: (arg: string) => ({
+        url: `/customers/repeat-customers?interval=${arg}`,
+        method: "GET",
+      }),
+      providesTags: ["Customers"],
+    }),
   }),
 });
 
-export const { useGetTotalSalesQuery, useGetSalesGrowthQuery } = mainApi;
+export const {
+  useGetTotalSalesQuery,
+  useGetNewCutomersQuery,
+  useGetSalesGrowthQuery,
+  useGetReapeatCutomersQuery,
+} = mainApi;

@@ -9,7 +9,7 @@ export const baseApi = createApi({
     baseUrl: "http://localhost:5000/api",
   }),
   endpoints: () => ({}),
-  tagTypes: ["Sales", "Growth"],
+  tagTypes: ["Sales", "Growth", "Customers"],
 });
 
 // Export hooks for usage in functional components, which are
