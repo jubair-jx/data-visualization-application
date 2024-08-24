@@ -1,5 +1,6 @@
 import CommonHeading from "@/components/CommonHeading/CommonHeading";
 import SalesGrowthGraph from "@/components/TotalSalesGraph/SalesGrowth";
+import Loading from "@/components/ui/Loading";
 import { useGetSalesGrowthQuery } from "@/redux/features/api/apis";
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ function SalesGrowth() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <section>

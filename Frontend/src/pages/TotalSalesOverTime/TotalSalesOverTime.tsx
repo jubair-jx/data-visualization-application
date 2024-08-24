@@ -1,5 +1,6 @@
 import CommonHeading from "@/components/CommonHeading/CommonHeading";
 import TotalSalesGraph from "@/components/TotalSalesGraph/TotalSalesGraph";
+import Loading from "@/components/ui/Loading";
 import { useGetTotalSalesQuery } from "@/redux/features/api/apis";
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ const TotalSalesOverTime = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <section>

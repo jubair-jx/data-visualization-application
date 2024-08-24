@@ -9,7 +9,7 @@ const MainLayout = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout style={{ height: "200vh" }}>
+    <Layout style={{ height: "115vh" }}>
       <SidebarLayout />
 
       <Layout>
