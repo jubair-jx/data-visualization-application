@@ -9,7 +9,7 @@ const NewCustomersBarGraph = ({ data }: { data: any }) => {
       },
     },
     xaxis: {
-      categories: data?.data?.map((item: { _id: unknown }) => item._id), // ['2020-01', '2020-02', ...]
+      categories: data?.data?.map((item: { _id: unknown }) => item._id),
       title: {
         text: "Stat Duration",
       },

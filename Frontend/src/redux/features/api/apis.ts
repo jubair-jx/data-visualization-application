@@ -30,11 +30,19 @@ export const mainApi = baseApi.injectEndpoints({
       }),
       providesTags: ["Customers"],
     }),
+    getCohortsByValue: build.query({
+      query: (arg: string) => ({
+        url: `/customers/clv-cohorts?interval=${arg}`,
+        method: "GET",
+      }),
+      providesTags: ["Customers"],
+    }),
   }),
 });
 
 export const {
   useGetTotalSalesQuery,
+  useGetCohortsByValueQuery,
   useGetNewCutomersQuery,
   useGetSalesGrowthQuery,
   useGetReapeatCutomersQuery,

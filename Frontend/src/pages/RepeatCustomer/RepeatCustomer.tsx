@@ -1,5 +1,5 @@
 import CommonHeading from "@/components/CommonHeading/CommonHeading";
-import SalesGrowthGraph from "@/components/TotalSalesGraph/SalesGrowth";
+import RepeatCustomersGraph from "@/components/Customers/RepeatCustomers";
 import Loading from "@/components/ui/Loading";
 import { useGetReapeatCutomersQuery } from "@/redux/features/api/apis";
 import { useState } from "react";
@@ -39,7 +39,7 @@ function RepeatCustomer() {
         </select>
       </div>
 
-      <SalesGrowthGraph data={data} />
+      <RepeatCustomersGraph data={data} />
     </section>
   );
 }
