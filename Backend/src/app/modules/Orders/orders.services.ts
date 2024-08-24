@@ -1,7 +1,7 @@
 import { orderModel } from './orders.model';
 
 export const getTotalSalesOverTime = async (query: Record<string, unknown>) => {
-  const interval = query.interval || 'yearly';
+  const interval = query.interval || 'quarterly';
   let dateFormat;
   let groupBy;
 

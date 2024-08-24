@@ -1,4 +1,4 @@
-import { baseApi } from "./features/api/api";
+import { baseApi } from "./features/api/baseApi";
 
 const reducer = {
   [baseApi.reducerPath]: baseApi.reducer,

@@ -1,6 +1,6 @@
-import { routePaths } from "@/routes/admin.routes";
 import { FaRegUserCircle } from "react-icons/fa";
 
+import { routePaths } from "@/routes/routePath";
 import { sideBarItemsGenerators } from "@/utils/sideBarItemsGenerators";
 import { Layout, Menu } from "antd";
 

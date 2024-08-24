@@ -1,7 +1,7 @@
 import App from "@/App";
 import { routeGenerators } from "@/utils/routeGenerators";
 import { createBrowserRouter } from "react-router-dom";
-import { routePaths } from "./admin.routes";
+import { routePaths } from "./routePath";
 
 const router = createBrowserRouter([
   {

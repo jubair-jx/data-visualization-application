@@ -1,4 +1,5 @@
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import TotalSalesOverTime from "@/pages/TotalSalesOverTime/TotalSalesOverTime";
 
 export const routePaths = [
   {
@@ -8,7 +9,7 @@ export const routePaths = [
   },
   {
     name: "Total Sales Over Time",
-    path: "dashboard",
-    element: <Dashboard />,
+    path: "total-sales",
+    element: <TotalSalesOverTime />,
   },
 ];
