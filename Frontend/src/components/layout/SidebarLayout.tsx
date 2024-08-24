@@ -3,6 +3,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { routePaths } from "@/routes/routePath";
 import { sideBarItemsGenerators } from "@/utils/sideBarItemsGenerators";
 import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -24,8 +25,11 @@ const SidebarLayout = () => {
     >
       <div className="demo-logo-vertical" />
 
-      <div className=" p-2 text-center mt-5 font-semibold text-lg text-white">
-        <h1>Data Visualiazation App</h1>
+      <div className="  p-4 text-center mt-5 font-bold text-lg text-gray-100">
+        {" "}
+        <Link className=" hover:text-gray-200" to={"/"}>
+          <h1 className="">Data Visualiazation App</h1>
+        </Link>
       </div>
 
       <div className=" mb-4">
@@ -42,7 +46,11 @@ const SidebarLayout = () => {
         mode="inline"
         defaultSelectedKeys={["4"]}
         items={sideItems}
-        style={{ background: "#030637" }}
+        style={{
+          background: "#030637",
+          color: "#fff",
+          fontWeight: "normal",
+        }}
       />
     </Sider>
   );

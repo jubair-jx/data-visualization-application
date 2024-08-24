@@ -1,5 +1,6 @@
 import { Layout, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import HomeStat from "../HomeStat/HomeStat";
 import SidebarLayout from "./SidebarLayout";
 
 const { Content } = Layout;
@@ -8,6 +9,9 @@ const MainLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const location = useLocation();
+
   return (
     <Layout style={{ height: "115vh" }}>
       <SidebarLayout />
@@ -22,7 +26,7 @@ const MainLayout = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <Outlet />
+            {location.pathname === "/" ? <HomeStat /> : <Outlet />}
           </div>
         </Content>
       </Layout>
